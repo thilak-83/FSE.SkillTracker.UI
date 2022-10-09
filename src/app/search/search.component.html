@@ -1,0 +1,66 @@
+<div class="container">
+    <div>
+        <h4>Associate Search</h4>
+        <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+            <div class="form-group mb-15">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name"
+                    #name="ngModel">
+
+            </div>
+            <div class="form-group mb-15">
+                <label for="alterEgo">Associate ID</label>
+                <input type="text" class="form-control" id="associateId" [(ngModel)]="model.associateId"
+                    name="associateId">
+            </div>
+
+            <div class="form-group mb-15">
+                <label for="skill">Skill</label>
+                <select class="form-control" id="skill" required [(ngModel)]="model.skill" name="skill"
+                    #power="ngModel">
+                    <option *ngFor="let sk of skills" [value]="sk">{{sk}}</option>
+                </select>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+
+        </form>
+    </div>
+    <div *ngFor="let pro of profiles">
+        <div class="row">
+            <div class="col-xs-3 col-md-3">
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">Name</div>
+                    <div class="col-xs-4 col-md-9">{{pro.name}}</div>
+
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">ID</div>
+                    <div class="col-xs-9 col-md-9">{{pro.associateId}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">Email</div>
+                    <div class="col-xs-9 col-md-9">{{pro.email}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-md-3">Mobile</div>
+                    <div class="col-xs-9 col-md-9">{{pro.mobile}}</div>
+                </div>
+            </div>
+            <div class="col-xs-3 col-md-9">
+                <div class="row">
+                    <div class="col-xs-5 col-md-7">
+                        <div *ngFor="let ski of pro.skillExpertise">
+                            <div class="row">
+                                <div class="col-xs-3 col-md-4">{{ski.skillName}}</div>
+                                <div class="col-xs-3 col-md-1">{{ski.expertise}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+    </div>
+</div>
